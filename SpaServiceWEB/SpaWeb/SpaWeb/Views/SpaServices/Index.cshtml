@@ -1,0 +1,111 @@
+﻿@model IEnumerable<SpaWeb.Models.SpaService>
+
+@{
+    ViewBag.Title = " Manage Spa Service";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<div class="breadcome-area">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="breadcome-list">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="breadcome-heading">
+                                <ul class="breadcome-menu">
+                                    <li>
+                                        <a href="#">Home</a> <span class="bread-slash">/</span>
+                                    </li>
+                                    <li>
+                                        <span class="bread-blod">Dashboard V.1</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="analytics-sparkle-area">
+    <div class="container-fluid">
+        <h2>Spa Service</h2>  
+        <div id="toolbar">
+            <a href="/SpaServices/Create" class="btn btn-primary shadow sharp me-1 fas">Create Spa Service</a>
+        </div>
+        <table id="table" data-toggle="table" data-pagination="true" data-search="true" data-show-columns="true" data-show-pagination-switch="true" data-show-refresh="true" data-key-events="true" data-show-toggle="true" data-resizable="true" data-cookie="true"
+               data-cookie-id-table="saveId" data-show-export="true" data-click-to-select="true" data-toolbar="#toolbar">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Description)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Price)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.DiscountMoney)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.DiscountPercent)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Response)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Image)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Service.ServiceType)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Spa.SpaName)
+                    </th>
+                    <th>Action</th>
+                 
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Description)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Price)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DiscountMoney)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DiscountPercent)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Response)
+                        </td>
+                        <td>
+                           <img src="/ImageSpa/@item.Image" height="80" width="150"/>
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Service.ServiceType)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Spa.SpaName)
+                        </td>
+                        <td>
+                            <a href="/SpaServices/Edit/@item.SpaServiceID" class="btn btn-warning shadow sharp me-1 fas ">Edit Spa Service</a>
+                            <a href="/SpaServices/Details/@item.SpaServiceID" class="btn btn-primary shadow sharp me-1 fas">Details Spa Service</a>
+                            <a href="/SpaServices/Delete/@item.SpaServiceID" class="btn btn-danger shadow sharp me-1 fas">Delete Spa Service</a>
+                          
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+

@@ -1,0 +1,122 @@
+﻿@model IEnumerable<SpaWeb.Models.Spa>
+
+@{
+    ViewBag.Title = "Manage Spa";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<div class="breadcome-area">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="breadcome-list">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="breadcome-heading">
+                                <ul class="breadcome-menu">
+                                    <li>
+                                        <a href="#">Home</a> <span class="bread-slash">/</span>
+                                    </li>
+                                    <li>
+                                        <span class="bread-blod">Dashboard V.1</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="analytics-sparkle-area">
+    <div class="container-fluid">
+        <h2>Spa</h2>
+        <div id="toolbar">
+            <a href="/Spas/Create" class="btn btn-primary shadow sharp me-1 fas">Create Spa</a>
+        </div>
+        <table id="table" data-toggle="table" data-pagination="true" data-search="true" data-show-columns="true" data-show-pagination-switch="true" data-show-refresh="true" data-key-events="true" data-show-toggle="true" data-resizable="true" data-cookie="true"
+               data-cookie-id-table="saveId" data-show-export="true" data-click-to-select="true" data-toolbar="#toolbar">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.SpaName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Phone)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Address)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Email)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Website)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Zalo)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Facebook)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Description)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Logo)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Image)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.SpaName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Phone)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Address)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Email)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Website)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Zalo)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Facebook)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Description)
+                        </td>
+                        <td>
+                            <img src="/ImageSpa/@item.Logo" height="80" width="150" />
+                        </td>
+                        <td>
+                            <img src="/ImageSpa/@item.Image" height="80" width="150" />
+                        </td>
+                        <td>
+                            <a href="/Spas/Edit/@item.SpaID" class="btn btn-warning shadow sharp me-1 fas ">Edit Spa</a>
+                            <a href="/Spas/Details/@item.SpaID" class="btn btn-primary shadow sharp me-1 fas">Details Spa</a>
+                            <a href="/Spas/Delete/@item.SpaID" class="btn btn-danger shadow sharp me-1 fas">Delete spa</a>
+                        
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+

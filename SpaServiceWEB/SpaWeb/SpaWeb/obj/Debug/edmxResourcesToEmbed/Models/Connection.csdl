@@ -1,0 +1,331 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BeautySystemDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Customer">
+    <Key>
+      <PropertyRef Name="CusID" />
+    </Key>
+    <Property Name="CusID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Fullname" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+    <Property Name="Phone" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+    <Property Name="Zalo" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Name="Image" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Order" Relationship="Self.FK__Order__CusID__37A5467C" FromRole="Customer" ToRole="Order" />
+  </EntityType>
+  <EntityType Name="Employee">
+    <Key>
+      <PropertyRef Name="EmpID" />
+    </Key>
+    <Property Name="EmpID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="SpaID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Fullname" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+    <Property Name="Phone" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+    <Property Name="Zalo" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Name="Image" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="EmpType" Type="Int32" />
+    <NavigationProperty Name="Spa" Relationship="Self.FK__Employee__SpaID__267ABA7A" FromRole="Employee" ToRole="Spa" />
+    <NavigationProperty Name="Order" Relationship="Self.FK__Order__EmpIDAcce__38996AB5" FromRole="Employee" ToRole="Order" />
+    <NavigationProperty Name="OrderDetail" Relationship="Self.FK__OrderDeta__EmpID__3F466844" FromRole="Employee" ToRole="OrderDetail" />
+  </EntityType>
+  <EntityType Name="Order">
+    <Key>
+      <PropertyRef Name="OrderID" />
+    </Key>
+    <Property Name="OrderID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CusID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="OrderTime" Type="DateTime" Precision="3" />
+    <Property Name="EmpIDAccept" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="PaymentFormID" Type="Int32" />
+    <Property Name="Status" Type="Int32" />
+    <NavigationProperty Name="Customer" Relationship="Self.FK__Order__CusID__37A5467C" FromRole="Order" ToRole="Customer" />
+    <NavigationProperty Name="Employee" Relationship="Self.FK__Order__EmpIDAcce__38996AB5" FromRole="Order" ToRole="Employee" />
+    <NavigationProperty Name="PaymentForm" Relationship="Self.FK__Order__PaymentFo__398D8EEE" FromRole="Order" ToRole="PaymentForm" />
+    <NavigationProperty Name="OrderDetail" Relationship="Self.FK__OrderDeta__Order__3C69FB99" FromRole="Order" ToRole="OrderDetail" />
+  </EntityType>
+  <EntityType Name="OrderDetail">
+    <Key>
+      <PropertyRef Name="OrderDetailID" />
+    </Key>
+    <Property Name="OrderDetailID" Type="String" MaxLength="22" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="OrderID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="SpaServiceID" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="TimeFrom" Type="DateTime" Precision="3" />
+    <Property Name="TimeTo" Type="DateTime" Precision="3" />
+    <Property Name="ServiceFormID" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="Phone" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+    <Property Name="Address" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="EmpIDRequest" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Employee" Relationship="Self.FK__OrderDeta__EmpID__3F466844" FromRole="OrderDetail" ToRole="Employee" />
+    <NavigationProperty Name="Order" Relationship="Self.FK__OrderDeta__Order__3C69FB99" FromRole="OrderDetail" ToRole="Order" />
+    <NavigationProperty Name="ServiceForm" Relationship="Self.FK__OrderDeta__Servi__3E52440B" FromRole="OrderDetail" ToRole="ServiceForm" />
+    <NavigationProperty Name="SpaService" Relationship="Self.FK__OrderDeta__SpaSe__3D5E1FD2" FromRole="OrderDetail" ToRole="SpaService" />
+  </EntityType>
+  <EntityType Name="PaymentForm">
+    <Key>
+      <PropertyRef Name="PaymentFormID" />
+    </Key>
+    <Property Name="PaymentFormID" Type="Int32" Nullable="false" />
+    <Property Name="PaymentFormName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Order" Relationship="Self.FK__Order__PaymentFo__398D8EEE" FromRole="PaymentForm" ToRole="Order" />
+  </EntityType>
+  <EntityType Name="Service">
+    <Key>
+      <PropertyRef Name="ServiceID" />
+    </Key>
+    <Property Name="ServiceID" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ServiceType" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Image" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="ServiceType1" Relationship="Self.FK__Service__Service__2B3F6F97" FromRole="Service" ToRole="ServiceType" />
+    <NavigationProperty Name="SpaService" Relationship="Self.FK__SpaServic__Servi__2E1BDC42" FromRole="Service" ToRole="SpaService" />
+  </EntityType>
+  <EntityType Name="ServiceForm">
+    <Key>
+      <PropertyRef Name="ServiceFormID" />
+    </Key>
+    <Property Name="ServiceFormID" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="OrderDetail" Relationship="Self.FK__OrderDeta__Servi__3E52440B" FromRole="ServiceForm" ToRole="OrderDetail" />
+  </EntityType>
+  <EntityType Name="ServiceType">
+    <Key>
+      <PropertyRef Name="ServiceType1" />
+    </Key>
+    <Property Name="ServiceType1" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Service" Relationship="Self.FK__Service__Service__2B3F6F97" FromRole="ServiceType" ToRole="Service" />
+  </EntityType>
+  <EntityType Name="Spa">
+    <Key>
+      <PropertyRef Name="SpaID" />
+    </Key>
+    <Property Name="SpaID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="SpaName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Phone" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+    <Property Name="Address" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Website" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Name="Zalo" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Name="Facebook" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Logo" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Image" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Employee" Relationship="Self.FK__Employee__SpaID__267ABA7A" FromRole="Spa" ToRole="Employee" />
+    <NavigationProperty Name="SpaService" Relationship="Self.FK__SpaServic__SpaID__2F10007B" FromRole="Spa" ToRole="SpaService" />
+  </EntityType>
+  <EntityType Name="SpaService">
+    <Key>
+      <PropertyRef Name="SpaServiceID" />
+    </Key>
+    <Property Name="SpaServiceID" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ServiceID" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="SpaID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Price" Type="Int64" />
+    <Property Name="DiscountMoney" Type="Int64" />
+    <Property Name="DiscountPercent" Type="Double" />
+    <Property Name="Response" Type="Int32" />
+    <Property Name="Image" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="OrderDetail" Relationship="Self.FK__OrderDeta__SpaSe__3D5E1FD2" FromRole="SpaService" ToRole="OrderDetail" />
+    <NavigationProperty Name="Service" Relationship="Self.FK__SpaServic__Servi__2E1BDC42" FromRole="SpaService" ToRole="Service" />
+    <NavigationProperty Name="Spa" Relationship="Self.FK__SpaServic__SpaID__2F10007B" FromRole="SpaService" ToRole="Spa" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <Association Name="FK__Order__CusID__37A5467C">
+    <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+    <End Role="Order" Type="Self.Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="CusID" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="CusID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Employee__SpaID__267ABA7A">
+    <End Role="Spa" Type="Self.Spa" Multiplicity="0..1" />
+    <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Spa">
+        <PropertyRef Name="SpaID" />
+      </Principal>
+      <Dependent Role="Employee">
+        <PropertyRef Name="SpaID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Order__EmpIDAcce__38996AB5">
+    <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+    <End Role="Order" Type="Self.Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="EmpID" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="EmpIDAccept" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__OrderDeta__EmpID__3F466844">
+    <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+    <End Role="OrderDetail" Type="Self.OrderDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="EmpID" />
+      </Principal>
+      <Dependent Role="OrderDetail">
+        <PropertyRef Name="EmpIDRequest" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Order__PaymentFo__398D8EEE">
+    <End Role="PaymentForm" Type="Self.PaymentForm" Multiplicity="0..1" />
+    <End Role="Order" Type="Self.Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PaymentForm">
+        <PropertyRef Name="PaymentFormID" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="PaymentFormID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__OrderDeta__Order__3C69FB99">
+    <End Role="Order" Type="Self.Order" Multiplicity="0..1" />
+    <End Role="OrderDetail" Type="Self.OrderDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Order">
+        <PropertyRef Name="OrderID" />
+      </Principal>
+      <Dependent Role="OrderDetail">
+        <PropertyRef Name="OrderID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__OrderDeta__Servi__3E52440B">
+    <End Role="ServiceForm" Type="Self.ServiceForm" Multiplicity="0..1" />
+    <End Role="OrderDetail" Type="Self.OrderDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ServiceForm">
+        <PropertyRef Name="ServiceFormID" />
+      </Principal>
+      <Dependent Role="OrderDetail">
+        <PropertyRef Name="ServiceFormID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__OrderDeta__SpaSe__3D5E1FD2">
+    <End Role="SpaService" Type="Self.SpaService" Multiplicity="0..1" />
+    <End Role="OrderDetail" Type="Self.OrderDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SpaService">
+        <PropertyRef Name="SpaServiceID" />
+      </Principal>
+      <Dependent Role="OrderDetail">
+        <PropertyRef Name="SpaServiceID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Service__Service__2B3F6F97">
+    <End Role="ServiceType" Type="Self.ServiceType" Multiplicity="0..1" />
+    <End Role="Service" Type="Self.Service" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ServiceType">
+        <PropertyRef Name="ServiceType1" />
+      </Principal>
+      <Dependent Role="Service">
+        <PropertyRef Name="ServiceType" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__SpaServic__Servi__2E1BDC42">
+    <End Role="Service" Type="Self.Service" Multiplicity="0..1" />
+    <End Role="SpaService" Type="Self.SpaService" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Service">
+        <PropertyRef Name="ServiceID" />
+      </Principal>
+      <Dependent Role="SpaService">
+        <PropertyRef Name="ServiceID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__SpaServic__SpaID__2F10007B">
+    <End Role="Spa" Type="Self.Spa" Multiplicity="0..1" />
+    <End Role="SpaService" Type="Self.SpaService" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Spa">
+        <PropertyRef Name="SpaID" />
+      </Principal>
+      <Dependent Role="SpaService">
+        <PropertyRef Name="SpaID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="BeautySystemDBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Customer" EntityType="Self.Customer" />
+    <EntitySet Name="Employee" EntityType="Self.Employee" />
+    <EntitySet Name="Order" EntityType="Self.Order" />
+    <EntitySet Name="OrderDetail" EntityType="Self.OrderDetail" />
+    <EntitySet Name="PaymentForm" EntityType="Self.PaymentForm" />
+    <EntitySet Name="Service" EntityType="Self.Service" />
+    <EntitySet Name="ServiceForm" EntityType="Self.ServiceForm" />
+    <EntitySet Name="ServiceType" EntityType="Self.ServiceType" />
+    <EntitySet Name="Spa" EntityType="Self.Spa" />
+    <EntitySet Name="SpaService" EntityType="Self.SpaService" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <AssociationSet Name="FK__Order__CusID__37A5467C" Association="Self.FK__Order__CusID__37A5467C">
+      <End Role="Customer" EntitySet="Customer" />
+      <End Role="Order" EntitySet="Order" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Employee__SpaID__267ABA7A" Association="Self.FK__Employee__SpaID__267ABA7A">
+      <End Role="Spa" EntitySet="Spa" />
+      <End Role="Employee" EntitySet="Employee" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Order__EmpIDAcce__38996AB5" Association="Self.FK__Order__EmpIDAcce__38996AB5">
+      <End Role="Employee" EntitySet="Employee" />
+      <End Role="Order" EntitySet="Order" />
+    </AssociationSet>
+    <AssociationSet Name="FK__OrderDeta__EmpID__3F466844" Association="Self.FK__OrderDeta__EmpID__3F466844">
+      <End Role="Employee" EntitySet="Employee" />
+      <End Role="OrderDetail" EntitySet="OrderDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Order__PaymentFo__398D8EEE" Association="Self.FK__Order__PaymentFo__398D8EEE">
+      <End Role="PaymentForm" EntitySet="PaymentForm" />
+      <End Role="Order" EntitySet="Order" />
+    </AssociationSet>
+    <AssociationSet Name="FK__OrderDeta__Order__3C69FB99" Association="Self.FK__OrderDeta__Order__3C69FB99">
+      <End Role="Order" EntitySet="Order" />
+      <End Role="OrderDetail" EntitySet="OrderDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK__OrderDeta__Servi__3E52440B" Association="Self.FK__OrderDeta__Servi__3E52440B">
+      <End Role="ServiceForm" EntitySet="ServiceForm" />
+      <End Role="OrderDetail" EntitySet="OrderDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK__OrderDeta__SpaSe__3D5E1FD2" Association="Self.FK__OrderDeta__SpaSe__3D5E1FD2">
+      <End Role="SpaService" EntitySet="SpaService" />
+      <End Role="OrderDetail" EntitySet="OrderDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Service__Service__2B3F6F97" Association="Self.FK__Service__Service__2B3F6F97">
+      <End Role="ServiceType" EntitySet="ServiceType" />
+      <End Role="Service" EntitySet="Service" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SpaServic__Servi__2E1BDC42" Association="Self.FK__SpaServic__Servi__2E1BDC42">
+      <End Role="Service" EntitySet="Service" />
+      <End Role="SpaService" EntitySet="SpaService" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SpaServic__SpaID__2F10007B" Association="Self.FK__SpaServic__SpaID__2F10007B">
+      <End Role="Spa" EntitySet="Spa" />
+      <End Role="SpaService" EntitySet="SpaService" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,21 @@
+﻿.inputfilelogo {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}
+    .inputfilelogo + label {
+        font-size: 1.25em;
+        font-weight: 700;
+        color: white;
+        background-color: blueviolet;
+        display: inline-block;
+        cursor: pointer;
+    }
+
+        .inputfilelogo:focus + label,
+        .inputfilelogo + label:hover {
+            background-color: aqua;
+        }

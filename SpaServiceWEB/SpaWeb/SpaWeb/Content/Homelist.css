@@ -1,0 +1,100 @@
+﻿img {
+    max-width: 100%;
+}
+
+* {
+    transition: all .5s ease;
+    -moz-transition: all .5s ease;
+    -webkit-transition: all .5s ease
+}
+
+.my-list {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #f5efef;
+    float: left;
+    margin: 15px 0;
+    border-radius: 5px;
+    box-shadow: 2px 3px 0px #e4d8d8;
+    position: relative;
+    overflow: hidden;
+}
+
+   
+    .logoimg{
+        height: 4em;
+        width: 10em;
+        margin: 1em 0px 1em 0px;
+    }
+    .Addressdt{
+        color: rgb(165, 22, 129);
+        font-weight: 800;
+        font-size: 1.5em;
+        font-family: 'Times New Roman', Times, serif;
+    }
+    .color{
+        color: rgb(165, 22, 129);
+        font-weight: 800;
+        font-size: 1.5em;
+        font-family: 'Times New Roman', Times, serif;
+        float: left;
+    }
+    .phone{
+        color:rgb(255, 0, 200);
+        font-weight: 800;
+        font-size: 1.5em;
+        font-family: 'Times New Roman', Times, serif;
+    }
+    .Website{
+        color: rgb(255, 0, 200);
+        width: 100%;
+        font-weight: 800;
+        font-size: 1.5em;
+        font-family: 'Times New Roman', Times, serif;
+    }
+.vnamespa{
+    color: rgb(189, 43, 226);
+    margin-bottom: -5px;
+    text-align:center;
+
+}
+    .my-list span {
+        float: left;
+        font-weight: bold; 
+         
+    }
+    .my-list .Address{
+        white-space: nowrap;
+        width: 100%;
+        overflow: hidden;
+     
+        color: black;
+    }
+
+        .my-list span:last-child {
+            float: right;
+        }
+
+    .my-list .offer {
+        width: 100%;
+        float: left;
+        margin: 5px 0;
+        border-top: 1px solid #ccc4c4;
+        margin-top: 5px;
+        padding-top: 5px;
+        color: #afadad;
+    }
+
+.detail {
+    position: absolute;
+    top: -100%;
+    left: 0;
+    text-align: center;
+    background: #fff;
+    height: 100%;
+    width: 100%;
+}
+
+.my-list:hover .detail {
+    top: 0;
+}

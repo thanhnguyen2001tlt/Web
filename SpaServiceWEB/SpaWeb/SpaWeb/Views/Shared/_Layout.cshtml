@@ -1,0 +1,167 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <link rel="stylesheet" href="~/Content/Client/css/bootstrap.min.css">
+    <!-- style css -->
+    <link rel="stylesheet" href="~/Content/Client/css/style.css">
+    <!-- Responsive-->
+    <link rel="stylesheet" href="~/Content/Client/css/responsive.css">
+    <link rel="stylesheet" href="~/Content/Homelist.css">
+    <!-- fevicon -->
+    <link rel="icon" href="~/Content/Client/images/fevicon.png" type="image/gif" />
+    <!-- Scrollbar Custom CSS -->
+    <link rel="stylesheet" href="~/Content/Client/css/jquery.mCustomScrollbar.min.css">
+    <!-- Tweaks for older IEs-->
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <!-- Font Awesome 5 CSS -->
+    <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.2/css/all.css'>
+</head>
+<body>
+    <div class="loader_bg">
+        <div class="loader"><img src="~/Content/Client/images/loading.gif" alt="#" /></div>
+    </div>
+    <!-- end loader -->
+    <!-- header -->
+    <header>
+        <!-- header inner -->
+        <div class="header">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-5 col-lg-5 col-md-9 col-sm-9">
+                        <nav class="navigation navbar navbar-expand-md navbar-dark ">
+                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="navbar-toggler-icon"></span>
+                            </button>
+                            <div class="collapse navbar-collapse" id="navbarsExample04">
+                                <ul class="navbar-nav mr-auto">
+                                    <li class="nav-item active">
+                                        <a class="nav-link" href="/Home/Index">Home</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="/Spas/Index">Spas</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
+                    <div class="col-xl-2 col-lg-2 col-md-3 col-sm-3 col logo_section">
+                        <div class="full">
+                            <div class="center-desk">
+                                <div class="logo">
+                                    <a href="index.html"><img src="~/Content/Client/images/logo.png" alt="#" /></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-5 col-lg-5 col-md-5 col-sm-5">
+                        <ul class="email">
+                            <li><a href="#">Call: (+71) 1234567890</a></li>
+                            <li><a href="#">Email: Spaweb.com</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div id="service" class="service">
+        <div class="container-fluid">
+            @RenderBody()
+        </div>
+    </div>
+    <footer id="contact">
+        <div class="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 offset-md-4">
+                        <form class="bottom_form">
+                            <h3>Newsletter</h3>
+                            <input class="enter" placeholder="Enter your email" type="text" name="Enter your email">
+                            <button class="sub_btn">subscribe</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xl-6 col-md-12">
+                        <div class="row">
+                            <div class="col-md-7 padd_bottom">
+                                <div class="heading3">
+                                    <a href="#"><img src="images/logo1.png" alt="#" /></a>
+                                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros.Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros.</p>
+                                </div>
+                            </div>
+                            <div class="col-md-5 padd_bottom padd_bott">
+                                <div class="heading3">
+                                    <h3>Contact Us</h3>
+                                    <ul class="infometion">
+                                        <li><a href="#">Donec odio. Quisque </a></li>
+                                        <li><a href="#">volutpat mattis</a></li>
+                                        <li><a href="#">eros.Lorem ipsum dolor</a></li>
+                                        <li><a href="#">sit amet, consectetuer  </a></li>
+                                        <li><a href="#">adipiscing elit. Donec  </a></li>
+                                        <li><a href="#">odio. Quisque volutpat </a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-6 col-md-12">
+                        <div class="row">
+                            <div class="col-md-6 offset-md-1 padd_bottom">
+                                <div class="heading3">
+                                    <h3>INFORMATION</h3>
+                                    <ul class="infometion">
+                                        <li><a href="#">Donec odio. Quisque </a></li>
+                                        <li><a href="#">volutpat mattis</a></li>
+                                        <li><a href="#">eros.Lorem ipsum dolor</a></li>
+                                        <li><a href="#">sit amet, consectetuer  </a></li>
+                                        <li><a href="#">adipiscing elit. Donec  </a></li>
+                                        <li><a href="#">odio. Quisque volutpat </a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-md-5">
+                                <div class="heading3">
+                                    <h3>MY ACCOUNT</h3>
+                                    <ul class="infometion">
+                                        <li><a href="#">Donec odio. Quisque </a></li>
+                                        <li><a href="#">volutpat mattis</a></li>
+                                        <li><a href="#">eros.Lorem ipsum dolor</a></li>
+                                        <li><a href="#">sit amet, consectetuer  </a></li>
+                                        <li><a href="#">adipiscing elit. Donec  </a></li>
+                                        <li><a href="#">odio. Quisque volutpat </a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <p>© 2019 All Rights Reserved. <a href="https://html.design/"> Free  html Templates</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- end footer -->
+    <!-- Javascript files-->
+    <script src="~/Content/Client/js/jquery.min.js"></script>
+    <script src="~/Content/Client/js/popper.min.js"></script>
+    <script src="~/Content/Client/js/bootstrap.bundle.min.js"></script>
+    <script src="~/Content/Client/js/jquery-3.0.0.min.js"></script>
+    <!-- sidebar -->
+    <script src="~/Content/Client/js/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="~/Content/Client/js/custom.js"></script>
+
+    @RenderSection("scripts", required: false)
+</body>
+</html>

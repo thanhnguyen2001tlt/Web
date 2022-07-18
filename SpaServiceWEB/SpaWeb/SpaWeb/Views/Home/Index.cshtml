@@ -1,0 +1,63 @@
+﻿@model IEnumerable<SpaWeb.Models.Spa>
+@{
+    ViewBag.Title = "Home";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+<div id="customer" class="customer">
+    <div class="container-fluid">
+        <div class="row">
+            @foreach (var spa in Model)
+            {
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <div class="my-list" style="height:50rem">
+                        <img src="~/ImageSpa/@spa.Image" alt="@spa.SpaName" style="height:35rem;width:100%" />
+                        <h1 class="vnamespa">@spa.SpaName</h1>
+                        <span class="Website">Website:<a>@spa.Website</a></span>
+                        <span class="phone">Phone:@spa.Phone</span>
+                        <div class="detail" style="background-color:aliceblue">
+                            <img src="~/ImageSpa/@spa.Logo" class="logoimg" />
+                            <table style="margin-left:5%" width="95%" height="80%" >
+                                <tr>
+                                    <th class="color"> Phone:@spa.Phone</th>
+                                </tr>
+                                <tr>
+                                    <th class="color"> Email:@spa.Email</th>
+                                </tr>
+                                <tr>
+                                    <th class="color">Zalo:@spa.Zalo</th>
+                                </tr>
+                                <tr>
+                                    <th class="color">Website:@spa.Website</th>
+                                </tr>
+                                <tr>
+                                    <th class="color">Facebook:@spa.Facebook</th>
+                                </tr>
+                                <tr>
+                                    <th class="color">Description:@spa.Description</th>
+                                </tr>
+                                @{
+                                    string kt = Html.Action("check", new { id = @spa.SpaID }).ToString();
+                                }
+                                <tr>
+                                    <th class="Addressdt"> Address:@spa.Address </th>
+                                </tr>
+
+                                @if (kt=="1")
+                                {
+                                    <tr>
+                                        <th><a href="/Home/Service/@spa.SpaID" class="btn btn-primary shadow sharp me-12 fas" style="width:100%">View more</a></th>
+                                    </tr>
+                                }
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            }
+
+        </div>
+    </div>
+</div>
